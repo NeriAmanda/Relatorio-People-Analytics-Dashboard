@@ -1,0 +1,44 @@
+relationship e945df15-8fa0-4c1b-8581-7f260124231b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Base Principal'.'Data de Nascimento'
+	toColumn: LocalDateTable_eb1ce057-b08b-4216-a920-b5262cd894b8.Date
+
+relationship AutoDetected_2b843304-580d-4a83-8864-71b60632a323
+	fromColumn: 'Base Principal'.UF
+	toColumn: Localidades.UF
+
+relationship 7fe1558c-7af5-6532-d85d-e2cf40175716
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Controle de Posições'.'ID Candidato Aprovado'
+	toColumn: 'Base Principal'.'ID Candidato'
+
+relationship a54e2924-437f-3e98-a2fa-cde294073abb
+	fromColumn: 'Base Principal'.Etapa
+	toColumn: Tabela_Etapas.Etapa
+
+relationship 220d688d-92f8-b196-957b-584582e1128b
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Top_10_Inscritos_Tabela.Curso
+	toColumn: 'Base Principal'.Curso
+
+relationship e092c8c9-2e59-f897-9112-d76b8b67f629
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Top_10_Inscritos_Tabela.'Instituição de Ensino'
+	toColumn: 'Base Principal'.'Instituição de Ensino'
+
+relationship 3e3b46aa-96a0-5dd8-ed94-c8b806c7cc53
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Top_10_Aprovados_Tabela.Curso
+	toColumn: 'Base Principal'.Curso
+
+relationship 1be81c1a-1457-ff26-6ff4-2c31fdf9b93c
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Top_10_Aprovados_Tabela.'Instituição de Ensino'
+	toColumn: 'Base Principal'.'Instituição de Ensino'
+

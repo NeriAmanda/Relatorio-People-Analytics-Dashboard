@@ -1,0 +1,373 @@
+table Medidas
+	lineageTag: 2fa741ef-7cb6-4cc5-ae31-5aea89ce08af
+
+	measure Total_Inscritos = COUNT('Base Principal'[ID Candidato])
+		formatString: 0
+		lineageTag: 1e84da19-3c9b-41df-a8e6-63fad198365a
+
+	measure Total_Dinamica = CALCULATE(COUNT('Base Principal'[ID Candidato]), 'Base Principal'[Etapa] IN {"Aprovados em Dinâmica", "Reprovados em Dinâmica"})
+		formatString: 0
+		lineageTag: 9ffa0ccf-caf5-4b51-bdc9-1eb4c8f72de8
+
+	measure Total_Painel = CALCULATE(COUNT('Base Principal'[ID Candidato]), 'Base Principal'[Etapa] IN {"Aprovados em Painel", "Reprovados em Painel"})
+		formatString: 0
+		lineageTag: 9ebacec6-2c79-4df4-9828-8e32fc6351d1
+
+	measure Total_Fora_Perfil = ```
+			CALCULATE(COUNT('Base Principal'[ID Candidato]), 'Base Principal'[Etapa] = "Fora do Perfil")
+			
+			```
+		formatString: 0
+		lineageTag: 89c9706a-4166-44f9-8082-ad59693f9b22
+
+	measure Total_Aprovados_Programa = ```
+			
+			COALESCE(
+			    CALCULATE(
+			        COUNT('Controle de Posições'[ID Candidato Aprovado]),
+			        'Controle de Posições'[Status da Posição] = "PREENCHIDA"
+			    ), 
+			    0
+			)
+			```
+		formatString: 0
+		lineageTag: b4aeea3b-0f54-46b1-980a-99572737c95e
+
+	measure Total_Reprovados_etapas = CALCULATE(COUNT('Base Principal'[ID Candidato]), 'Base Principal'[Etapa] IN {"Reprovados em Dinâmica", "Reprovados em Painel"})
+		formatString: 0
+		lineageTag: f3100702-b569-44e7-90ea-8033947c5ec9
+
+	measure Percentual_Reprovados_etapas = DIVIDE([Total_Reprovados_etapas], [Total_Inscritos], 0)
+		lineageTag: 05b8d629-7c47-4290-bfc8-1e2da434f040
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Total_Reprovados_Programa =
+			
+			VAR Aprovados = DISTINCT('Controle de Posições'[ID Candidato Aprovado])
+			RETURN
+			CALCULATE(
+			    COUNT('Base Principal'[ID Candidato]),
+			    'Base Principal'[Etapa] IN {"Aprovados em Dinâmica", "Reprovados em Dinâmica", "Aprovados em Painel", "Reprovados em Painel"},
+			    NOT('Base Principal'[ID Candidato] IN Aprovados)
+			)
+		formatString: 0
+		lineageTag: db1e6777-9e64-4b10-b66a-8eeaa13222fb
+
+	measure Quantidade_Por_Etapa =
+			
+			SWITCH(
+			    SELECTEDVALUE(Tabela_Etapas[Etapa]),
+			    "Inscritos", [Total_Inscritos],
+			    "Dinâmica de Grupo", [Total_Dinamica],
+			    "Painel com Gestores", [Total_Painel],
+			    "Aprovados no Programa", [Total_Aprovados_Programa],
+			    BLANK()
+			)
+		formatString: 0
+		lineageTag: 6e0a8807-a885-46df-bf9b-0f5cb3866905
+
+	measure Total_Inscritos_Genero = ```
+			
+			CALCULATE(
+			    COUNT('Base Principal'[ID Candidato]), 
+			    ALLEXCEPT('Base Principal', 'Base Principal'[Gênero])
+			)
+			```
+		formatString: 0
+		lineageTag: aeb9d852-fe95-4586-ab25-196fed136287
+
+	measure Total_Aprovados_Avaliacao_Genero = ```
+			
+			CALCULATE(
+			    COUNT('Base Principal'[ID Candidato]), 
+			    'Base Principal'[Etapa] IN {"Aprovados em Dinâmica", "Aprovados em Painel"},
+			    ALLEXCEPT('Base Principal', 'Base Principal'[Gênero])
+			)
+			```
+		formatString: 0
+		lineageTag: b02223e8-4d68-47f6-a3fe-8b93ada38ff0
+
+	measure Total_Reprovados_Avaliacao_Genero = ```
+			
+			CALCULATE(
+			    COUNT('Base Principal'[ID Candidato]), 
+			    'Base Principal'[Etapa] IN {"Reprovados em Dinâmica", "Reprovados em Painel"},
+			    ALLEXCEPT('Base Principal', 'Base Principal'[Gênero])
+			)
+			```
+		formatString: 0
+		lineageTag: fd039c25-7bd6-4632-a3b6-b86c0f6282ea
+
+	measure Total_Inscritos_Curso_Instituicao = ```
+			
+			CALCULATE(
+			    COUNT('Base Principal'[ID Candidato]), 
+			    ALLEXCEPT('Base Principal', 'Base Principal'[Curso], 'Base Principal'[Instituição de Ensino])
+			)
+			```
+		formatString: 0
+		lineageTag: fb883e45-0b32-44db-ad1f-0e72fdc15879
+
+	measure Total_Aprovados_Avaliacao_Curso_Instituicao = ```
+			
+			CALCULATE(
+			    COUNT('Base Principal'[ID Candidato]), 
+			    'Base Principal'[Etapa] IN {"Aprovados em Dinâmica", "Aprovados em Painel"},
+			    ALLEXCEPT('Base Principal', 'Base Principal'[Curso], 'Base Principal'[Instituição de Ensino])
+			)
+			```
+		formatString: 0
+		lineageTag: 416946bf-cbc4-43b1-b686-7ee18b0cd2ba
+
+	measure Total_Reprovados_Avaliacao_Curso_Instituicao = ```
+			
+			CALCULATE(
+			    COUNT('Base Principal'[ID Candidato]), 
+			    'Base Principal'[Etapa] IN {"Reprovados em Dinâmica", "Reprovados em Painel"},
+			    ALLEXCEPT('Base Principal', 'Base Principal'[Curso], 'Base Principal'[Instituição de Ensino])
+			)
+			```
+		formatString: 0
+		lineageTag: 2ee4315a-03fe-4ed5-be7a-13fa630589b2
+
+	measure Total_Inscritos_por_Estado =
+			
+			CALCULATE(
+			    [Total_Inscritos],
+			    ALLEXCEPT('Localidades', 'Localidades'[Estado])
+			)
+		formatString: 0
+		lineageTag: b936d2a3-7068-4fd2-bffb-00b5255a31f4
+
+	measure Total_Prio_Emprego_SIM = ```
+			
+			CALCULATE(
+			    COUNT('Base Principal'[ID Candidato]), 
+			    'Base Principal'[Será seu primeiro emprego?] = "Sim"
+			)
+			```
+		formatString: 0
+		lineageTag: 67bf1637-8bd1-42fe-a90a-629c8999fc8e
+
+	measure Total_Prio_Emprego_NAO = ```
+			
+			CALCULATE(
+			    COUNT('Base Principal'[ID Candidato]), 
+			    'Base Principal'[Será seu primeiro emprego?] = "Não"
+			)
+			```
+		formatString: 0
+		lineageTag: 42a38953-44e6-4bec-844d-3d3d073a28d8
+
+	measure Total_Aprovados_Indicados = ```
+			
+			CALCULATE(
+			    COUNT('Controle de Posições'[ID Candidato Aprovado]), 
+			    'Base Principal'[Recebeu indicação da empresa?] = "Sim",
+			    'Controle de Posições'[Status da Posição] = "PREENCHIDA"
+			)
+			```
+		formatString: 0
+		lineageTag: 6c199e97-68fc-47c7-b74c-efd4acd74eb5
+
+	measure Total_Aprovados_Nao_Indicados = ```
+			
+			CALCULATE(
+			    COUNT('Controle de Posições'[ID Candidato Aprovado]), 
+			    'Base Principal'[Recebeu indicação da empresa?] = "Não",
+			    'Controle de Posições'[Status da Posição] = "PREENCHIDA"
+			)
+			```
+		formatString: 0
+		lineageTag: 7a023d87-5ea5-4e67-a17d-9b40e3ee04eb
+
+	measure Total_Inscritos_Negros =
+			
+			CALCULATE(
+			    COUNT('Base Principal'[ID Candidato]),
+			    'Base Principal'[Raça] IN {"Preto", "Pardo"}
+			)
+		formatString: 0
+		lineageTag: 395f1cb8-1d88-4173-8b0d-e2124a0617da
+
+	measure Pct_Inscritos_Negros =
+			
+			DIVIDE([Total_Inscritos_Negros], [Total_Inscritos], 0)
+		lineageTag: 69355089-05f2-481a-b18c-7d99f9465f9e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Total_Aprovados_Negros =
+			
+			CALCULATE(
+			    COUNT('Base Principal'[ID Candidato]),
+			    'Base Principal'[Raça] IN {"Preto", "Pardo"},
+			    'Controle de Posições'[Status da Posição] = "PREENCHIDA"
+			)
+		formatString: 0
+		lineageTag: aef9fb6d-1f34-45c4-a31e-d4db6867daba
+
+	measure Pct_Aprovados_Negros =
+			
+			DIVIDE([Total_Aprovados_Negros], [Total_Aprovados_Programa], 0)
+		lineageTag: a45919f1-beb4-4552-97a9-06d48f63da3f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Meta_Diversidade = 0.5
+		lineageTag: 1ce30a9e-03aa-457a-b0f7-070b74ffde31
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Posicoes_Totais = COALESCE(COUNTROWS('Controle de Posições'), 0)
+		formatString: 0
+		lineageTag: b4c1a578-06f8-4ac4-9d13-d3d655ef4c94
+
+	measure Posicoes_Canceladas = ```
+			
+			COALESCE(
+			    CALCULATE(
+			        COUNTROWS('Controle de Posições'),
+			        'Controle de Posições'[Status da Posição] = "CANCELADA"
+			    ), 
+			    0
+			)
+			```
+		formatString: 0
+		lineageTag: 89e421ff-e75b-40e4-b0db-dede29b00e58
+
+	measure Posicoes_Preenchidas =
+			
+			CALCULATE(
+			    COUNTROWS('Controle de Posições'),
+			    'Controle de Posições'[Status da Posição] = "PREENCHIDA"
+			)
+		formatString: 0
+		lineageTag: 79a088f2-cb56-49dd-9ffd-6eb82fc9dbc0
+
+	measure Percentual_Preenchidas = ```
+			
+			VAR PosicoesPreenchidas = COALESCE([Posicoes_Preenchidas], 0)
+			VAR PosicoesTotais = COALESCE([Posicoes_Totais], 0)
+			
+			RETURN 
+			DIVIDE(PosicoesPreenchidas, PosicoesTotais, 0)
+			```
+		lineageTag: d356ffcb-7198-46f5-acfc-5edaabf5c7f5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Total_Inscritos_Por_Origem =
+			
+			CALCULATE(
+			    COUNT('Base Principal'[ID Candidato]),
+			    ALLEXCEPT('Base Principal', 'Base Principal'[Origem das Inscrições])
+			)
+		formatString: 0
+		lineageTag: d20c68c0-1cd5-4a16-a253-05da6c3285f2
+
+	measure Total_Inscritos_PcD = ```
+			
+			CALCULATE(
+			    COUNT('Base Principal'[ID Candidato]), 
+			    'Base Principal'[PcD] = "Sim"
+			)
+			```
+		formatString: 0
+		lineageTag: ba1674b4-0afe-4084-badb-d0b015029e15
+
+	measure Total_Inscritos_Nao_PcD = ```
+			
+			CALCULATE(
+			    COUNT('Base Principal'[ID Candidato]), 
+			    'Base Principal'[PcD] = "Não"
+			)
+			```
+		formatString: 0
+		lineageTag: 32668600-a948-4c1e-bef1-59a125ed7d14
+
+	measure Total_Inscritos_Maior_30 =
+			
+			CALCULATE(
+			    COUNT('Base Principal'[ID Candidato]),
+			    'Base Principal'[Idade] > 30
+			)
+		formatString: 0
+		lineageTag: da4abc0d-7382-400b-abc4-6ae7c4601fcc
+
+	measure Total_Inscritos_Ate_20 =
+			
+			CALCULATE(
+			    COUNT('Base Principal'[ID Candidato]),
+			    'Base Principal'[Idade] <= 20
+			)
+		formatString: 0
+		lineageTag: 406c3e92-60c0-4dac-8dfc-443e99ff0ce9
+
+	measure Total_Inscritos_21_25 =
+			
+			CALCULATE(
+			    COUNT('Base Principal'[ID Candidato]),
+			    'Base Principal'[Idade] >= 21 && 'Base Principal'[Idade] <= 25
+			)
+		formatString: 0
+		lineageTag: f2274a03-4b19-4a4a-9209-91885ec2f767
+
+	measure Total_Inscritos_26_30 =
+			
+			CALCULATE(
+			    COUNT('Base Principal'[ID Candidato]),
+			    'Base Principal'[Idade] >= 26 && 'Base Principal'[Idade] <= 30
+			)
+		formatString: 0
+		lineageTag: 48ff3254-6855-4863-9f94-e5f820a887ba
+
+	measure Total_Inscritos_EAD =
+			
+			CALCULATE(
+			    COUNT('Base Principal'[ID Candidato]),
+			    'Base Principal'[Modalidade do Curso] = "EAD"
+			)
+		formatString: 0
+		lineageTag: 932b7b6d-c54e-452e-a602-97e6eb7af6a0
+
+	measure Total_Inscritos_Semipresencial =
+			
+			CALCULATE(
+			    COUNT('Base Principal'[ID Candidato]),
+			    'Base Principal'[Modalidade do Curso] = "Semipresencial"
+			)
+		formatString: 0
+		lineageTag: d03f1bdb-1fb7-45e7-944f-e07d9fe6fbcf
+
+	measure Total_Inscritos_Presencial =
+			
+			CALCULATE(
+			    COUNT('Base Principal'[ID Candidato]),
+			    'Base Principal'[Modalidade do Curso] = "Presencial"
+			)
+		formatString: 0
+		lineageTag: 117cd88f-63c4-4cf8-9a27-fa0a05ee6ab4
+
+	column 'Coluna 1'
+		dataType: string
+		lineageTag: bb7f4df6-b520-4618-a6e8-abcc82b770f3
+		summarizeBy: none
+		sourceColumn: Coluna 1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Medidas = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Coluna 1", type text}})
+				in
+				    #"Tipo Alterado"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

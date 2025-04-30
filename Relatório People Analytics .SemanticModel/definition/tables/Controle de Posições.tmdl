@@ -1,0 +1,81 @@
+table 'Controle de Posições'
+	lineageTag: 2b480e25-207f-46ed-914b-4576306e453e
+
+	column 'Status da Posição'
+		dataType: string
+		lineageTag: b2dcfbd7-8143-4ea0-a000-55724f87f952
+		summarizeBy: none
+		sourceColumn: Status da Posição
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Área da Posição'
+		dataType: string
+		lineageTag: fc0bd18f-ca9d-4da8-b9f4-c997b9fb3a90
+		summarizeBy: none
+		sourceColumn: Área da Posição
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nome do Aprovado'
+		dataType: string
+		lineageTag: 444dfabb-ce8e-4637-93cd-84370083461f
+		summarizeBy: none
+		sourceColumn: Nome do Aprovado
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ID Candidato Aprovado'
+		dataType: string
+		lineageTag: 5b5ff5ae-f34c-4fbd-b76e-60a0abf7a1d9
+		summarizeBy: none
+		sourceColumn: ID Candidato Aprovado
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tempo de Contrato em Meses'
+		dataType: int64
+		formatString: 0
+		lineageTag: 55512e20-03c5-4806-b964-80b4b8990b16
+		summarizeBy: sum
+		sourceColumn: Tempo de Contrato em Meses
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unidade de Atuação'
+		dataType: string
+		lineageTag: e29e0897-c2f8-41d7-a762-228480b71238
+		summarizeBy: none
+		sourceColumn: Unidade de Atuação
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Controle de Posições' = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents("C:\Users\User\Documents\PROCESSOS SELETIVOS\universia - santander - estágio\Business Case Universia.xlsx"), null, true),
+				    #"Controle de Posições_Sheet" = Fonte{[Item="Controle de Posições",Kind="Sheet"]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Controle de Posições_Sheet",{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}}),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(#"Tipo Alterado", [PromoteAllScalars=true]),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"CONTROLE DE POSIÇÕES + APROVADOS NO PROGRAMA", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}}),
+				    #"Cabeçalhos Promovidos1" = Table.PromoteHeaders(#"Tipo Alterado1", [PromoteAllScalars=true]),
+				    #"Tipo Alterado2" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos1",{{"Status da Posição", type text}, {"Área da Posição", type text}, {"Nome do Aprovado", type text}, {"Código do Aprovado", type text}, {"Tempo de contrato", type text}, {"Unidade de Atuação", type text}}),
+				    #"Dividir Coluna por Delimitador" = Table.SplitColumn(#"Tipo Alterado2", "Código do Aprovado", Splitter.SplitTextByEachDelimiter({"_"}, QuoteStyle.Csv, false), {"Código do Aprovado.1", "Código do Aprovado.2"}),
+				    #"Tipo Alterado3" = Table.TransformColumnTypes(#"Dividir Coluna por Delimitador",{{"Código do Aprovado.1", type text}, {"Código do Aprovado.2", Int64.Type}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado3",{"Código do Aprovado.1"}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Colunas Removidas",{{"Código do Aprovado.2", "ID Candidato"}}),
+				    #"Dividir Coluna por Delimitador1" = Table.SplitColumn(#"Colunas Renomeadas", "Tempo de contrato", Splitter.SplitTextByEachDelimiter({" "}, QuoteStyle.Csv, false), {"Tempo de contrato.1", "Tempo de contrato.2"}),
+				    #"Tipo Alterado4" = Table.TransformColumnTypes(#"Dividir Coluna por Delimitador1",{{"Tempo de contrato.1", Int64.Type}, {"Tempo de contrato.2", type text}}),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Tipo Alterado4",{{"Tempo de contrato.1", "Tempo de contrato em Meses"}}),
+				    #"Colunas Removidas1" = Table.RemoveColumns(#"Colunas Renomeadas1",{"Tempo de contrato.2"}),
+				    #"Colunas Renomeadas2" = Table.RenameColumns(#"Colunas Removidas1",{{"Tempo de contrato em Meses", "Tempo de Contrato em Meses"}, {"ID Candidato", "ID Candidato Aprovado"}}),
+				    #"Tipo Alterado5" = Table.TransformColumnTypes(#"Colunas Renomeadas2",{{"ID Candidato Aprovado", type text}}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Tipo Alterado5", each true)
+				in
+				    #"Linhas Filtradas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

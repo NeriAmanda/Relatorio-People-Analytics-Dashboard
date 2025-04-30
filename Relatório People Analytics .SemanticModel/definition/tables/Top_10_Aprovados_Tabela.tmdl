@@ -1,0 +1,48 @@
+table Top_10_Aprovados_Tabela
+	lineageTag: 9cf20e25-a756-40b7-a3c7-306e6b8748b8
+
+	column Curso
+		lineageTag: 6be9a5f5-8597-46a1-a2aa-eafd5729d183
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Base Principal[Curso]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Instituição de Ensino'
+		lineageTag: 212e11b0-793f-4cff-a153-d6c4aa3b7931
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Base Principal[Instituição de Ensino]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total_Aprovados
+		formatString: 0
+		lineageTag: 782b7a4e-6477-40f2-9680-ab0d7915970f
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Total_Aprovados]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Top_10_Aprovados_Tabela = calculated
+		mode: import
+		source = ```
+				
+				TOPN(
+				    10, 
+				    SUMMARIZE(
+				        'Base Principal', 
+				        'Base Principal'[Curso], 
+				        'Base Principal'[Instituição de Ensino], 
+				        "Total_Aprovados", CALCULATE(COUNT('Base Principal'[ID Candidato]), 
+				                                      'Base Principal'[Etapa] IN {"Aprovados em Dinâmica", "Aprovados em Painel"})
+				    ), 
+				    [Total_Aprovados], 
+				    DESC
+				)
+				```
+
+	annotation PBI_Id = 5330919233fb4784a97511f13f3cf3b9
+

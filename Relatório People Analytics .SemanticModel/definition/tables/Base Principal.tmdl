@@ -1,0 +1,286 @@
+table 'Base Principal'
+	lineageTag: b7705c01-8e42-421f-9ff9-028761edcf6f
+
+	column 'ID Candidato'
+		dataType: string
+		lineageTag: 1fe20db8-aa3b-4040-9e28-27138df53a4d
+		summarizeBy: none
+		sourceColumn: ID Candidato
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nome
+		dataType: string
+		lineageTag: 6095bd6a-c5cc-4026-a2a9-24db5871c2ae
+		summarizeBy: none
+		sourceColumn: Nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column Email
+		dataType: string
+		lineageTag: d0cdbbcf-ce84-4274-91a9-197550e28ed5
+		summarizeBy: none
+		sourceColumn: Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Data de Nascimento'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2e2abcdb-288a-421f-a6e3-aea4bb95a46f
+		summarizeBy: none
+		sourceColumn: Data de Nascimento
+
+		variation Variation
+			isDefault
+			relationship: e945df15-8fa0-4c1b-8581-7f260124231b
+			defaultHierarchy: LocalDateTable_eb1ce057-b08b-4216-a920-b5262cd894b8.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Idade
+		dataType: int64
+		formatString: 0
+		lineageTag: 932ab74f-d989-42d3-89ac-0fcff2510064
+		summarizeBy: sum
+		sourceColumn: Idade
+
+		annotation SummarizationSetBy = Automatic
+
+	column Etapa
+		dataType: string
+		lineageTag: 54788390-fb30-47ab-a03a-86533540a852
+		summarizeBy: none
+		sourceColumn: Etapa
+
+		annotation SummarizationSetBy = Automatic
+
+	column Raça
+		dataType: string
+		lineageTag: cde14c3d-dc15-4c14-aacb-1f280d482abb
+		summarizeBy: none
+		sourceColumn: Raça
+
+		annotation SummarizationSetBy = Automatic
+
+	column Gênero
+		dataType: string
+		lineageTag: 8ad45057-d589-498b-97b3-9d8422d4b7bf
+		summarizeBy: none
+		sourceColumn: Gênero
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Orientação Sexual'
+		dataType: string
+		lineageTag: b56c6ee6-03e4-41bc-b354-79f70b3db026
+		summarizeBy: none
+		sourceColumn: Orientação Sexual
+
+		annotation SummarizationSetBy = Automatic
+
+	column PCD
+		dataType: string
+		lineageTag: 855af858-b8f8-42f4-99ec-4539ca806906
+		summarizeBy: none
+		sourceColumn: PCD
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tipo de Deficiência'
+		dataType: string
+		lineageTag: 8cc64700-f4af-4a60-a845-eb40fc279d59
+		summarizeBy: none
+		sourceColumn: Tipo de Deficiência
+
+		annotation SummarizationSetBy = Automatic
+
+	column UF
+		dataType: string
+		lineageTag: 22020e16-82c7-4c63-ba55-64b4ddd2af6d
+		summarizeBy: none
+		sourceColumn: UF
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cidade
+		dataType: string
+		lineageTag: 40a985fd-871f-4f2d-bdff-cb56510e647c
+		summarizeBy: none
+		sourceColumn: Cidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tipo de Formação'
+		dataType: string
+		lineageTag: 98cab138-ad8d-4c9e-b6d9-351a57fa138a
+		summarizeBy: none
+		sourceColumn: Tipo de Formação
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Modalidade do Curso'
+		dataType: string
+		lineageTag: b6da62ab-c096-4591-95b2-cd4ce6b482d7
+		summarizeBy: none
+		sourceColumn: Modalidade do Curso
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Horário do Curso'
+		dataType: string
+		lineageTag: 887e6320-661b-40e0-a244-cf7952783dbe
+		summarizeBy: none
+		sourceColumn: Horário do Curso
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Situação do Curso'
+		dataType: string
+		lineageTag: 6401e6b0-6f5a-42e9-b8d9-c899f52405c0
+		summarizeBy: none
+		sourceColumn: Situação do Curso
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Semestre Atual'
+		dataType: string
+		lineageTag: f4ada4a7-f7cb-4818-a9d9-e2891388155d
+		summarizeBy: none
+		sourceColumn: Semestre Atual
+
+		annotation SummarizationSetBy = Automatic
+
+	column Curso
+		dataType: string
+		lineageTag: 13d225f7-e1be-4db8-b84a-bfec08bc1c63
+		summarizeBy: none
+		sourceColumn: Curso
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Instituição de Ensino'
+		dataType: string
+		lineageTag: f993c101-335a-4319-8e66-e9b15db37374
+		summarizeBy: none
+		sourceColumn: Instituição de Ensino
+
+		annotation SummarizationSetBy = Automatic
+
+	column Inglês
+		dataType: string
+		lineageTag: a9a6fc7b-c4bb-4de2-8880-c297834c1850
+		summarizeBy: none
+		sourceColumn: Inglês
+
+		annotation SummarizationSetBy = Automatic
+
+	column Excel
+		dataType: string
+		lineageTag: cc240142-c15e-4da0-a446-1a6689bd9797
+		summarizeBy: none
+		sourceColumn: Excel
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Power BI'
+		dataType: string
+		lineageTag: 9455a553-532b-4482-9ff8-a8d403e2c036
+		summarizeBy: none
+		sourceColumn: Power BI
+
+		annotation SummarizationSetBy = Automatic
+
+	column Python
+		dataType: string
+		lineageTag: a6b6fa3b-1bf2-4e65-ae11-1e919c62e00f
+		summarizeBy: none
+		sourceColumn: Python
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Origem das Inscrições'
+		dataType: string
+		lineageTag: a6148bd6-a7ff-4940-91ca-e9f2ca095527
+		summarizeBy: none
+		sourceColumn: Origem das Inscrições
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Recebeu indicação da empresa?'
+		dataType: string
+		lineageTag: 8ae39feb-f369-4725-b259-ae762c61f833
+		summarizeBy: none
+		sourceColumn: Recebeu indicação da empresa?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Será seu primeiro emprego?'
+		dataType: string
+		lineageTag: 27329ee8-ec09-4e09-9806-f5698d794c03
+		summarizeBy: none
+		sourceColumn: Será seu primeiro emprego?
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Base Principal' = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents("C:\Users\User\Documents\PROCESSOS SELETIVOS\universia - santander - estágio\Business Case Universia.xlsx"), null, true),
+				    #"Base Principal_Sheet" = Fonte{[Item="Base Principal",Kind="Sheet"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(#"Base Principal_Sheet", [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Código do Candidato", type text}, {"Nome", type text}, {"Email", type text}, {"Data de Nascimento", type date}, {"Etapa", type text}, {"Raça", type text}, {"Gênero", type text}, {"Orientação Sexual", type text}, {"PCD", type text}, {"Tipo de Deficiência", type text}, {"Estado-Cidade", type text}, {"Tipo de Formação", type text}, {"Modalidade do Curso", type text}, {"Horário do Curso", type text}, {"Situação do Curso", type text}, {"Semestre Atual", type text}, {"Curso", type text}, {"Instituição de Ensino", type text}, {"Inglês", type text}, {"Excel", type text}, {"Power BI", type text}, {"Python", type text}, {"Origem das Inscrições", type text}, {"Recebeu indicação da empresa?", type text}, {"Será seu primeiro emprego?", type text}}),
+				    #"Dividir Coluna por Delimitador" = Table.SplitColumn(#"Tipo Alterado", "Código do Candidato", Splitter.SplitTextByEachDelimiter({"_"}, QuoteStyle.Csv, false), {"Código do Candidato.1", "Código do Candidato.2"}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Dividir Coluna por Delimitador",{{"Código do Candidato.1", type text}, {"Código do Candidato.2", Int64.Type}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado1",{"Código do Candidato.1"}),
+				    #"Tipo Alterado2" = Table.TransformColumnTypes(#"Colunas Removidas",{{"Código do Candidato.2", Int64.Type}}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Tipo Alterado2",{{"Código do Candidato.2", "ID Candidato"}}),
+				    #"Idade Inserida" = Table.AddColumn(#"Colunas Renomeadas", "Idade", each Date.From(DateTime.LocalNow()) - [Data de Nascimento], type duration),
+				    #"Total de Anos Calculado" = Table.TransformColumns(#"Idade Inserida",{{"Idade", each Duration.TotalDays(_) / 365, type number}}),
+				    #"Tipo Alterado3" = Table.TransformColumnTypes(#"Total de Anos Calculado",{{"Idade", Int64.Type}}),
+				    #"Colunas Reordenadas" = Table.ReorderColumns(#"Tipo Alterado3",{"ID Candidato", "Nome", "Email", "Data de Nascimento", "Idade", "Etapa", "Raça", "Gênero", "Orientação Sexual", "PCD", "Tipo de Deficiência", "Estado-Cidade", "Tipo de Formação", "Modalidade do Curso", "Horário do Curso", "Situação do Curso", "Semestre Atual", "Curso", "Instituição de Ensino", "Inglês", "Excel", "Power BI", "Python", "Origem das Inscrições", "Recebeu indicação da empresa?", "Será seu primeiro emprego?"}),
+				    #"Tipo Alterado4" = Table.TransformColumnTypes(#"Colunas Reordenadas",{{"Idade", Int64.Type}}),
+				    #"Dividir Coluna por Delimitador1" = Table.SplitColumn(#"Tipo Alterado4", "Estado-Cidade", Splitter.SplitTextByEachDelimiter({"-"}, QuoteStyle.Csv, false), {"Estado-Cidade.1", "Estado-Cidade.2"}),
+				    #"Tipo Alterado5" = Table.TransformColumnTypes(#"Dividir Coluna por Delimitador1",{{"Estado-Cidade.1", type text}, {"Estado-Cidade.2", type text}}),
+				    #"Linhas Filtradas1" = Table.SelectRows(#"Tipo Alterado5", each true),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Linhas Filtradas1",{{"Estado-Cidade.1", "UF"}, {"Estado-Cidade.2", "Cidade"}}),
+				    #"Tipo Alterado6" = Table.TransformColumnTypes(#"Colunas Renomeadas1",{{"ID Candidato", type text}}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Tipo Alterado6", each true),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Linhas Filtradas","Black","Preto",Replacer.ReplaceText,{"Raça"}),
+				    #"Valor Substituído1" = Table.ReplaceValue(#"Valor Substituído","White","Branco",Replacer.ReplaceText,{"Raça"}),
+				    #"Linhas Filtradas2" = Table.SelectRows(#"Valor Substituído1", each true),
+				    #"Valor Substituído2" = Table.ReplaceValue(#"Linhas Filtradas2","Mulher Cisgenero","Mulher Cisgênero",Replacer.ReplaceText,{"Gênero"}),
+				    #"Linhas Filtradas3" = Table.SelectRows(#"Valor Substituído2", each true),
+				    #"Valor Substituído3" = Table.ReplaceValue(#"Linhas Filtradas3","Erro","Não Informado",Replacer.ReplaceText,{"Gênero"}),
+				    #"Linhas Filtradas4" = Table.SelectRows(#"Valor Substituído3", each true),
+				    #"Valor Substituído4" = Table.ReplaceValue(#"Linhas Filtradas4","Sao Paulo","São Paulo",Replacer.ReplaceText,{"Cidade"}),
+				    #"Linhas Filtradas5" = Table.SelectRows(#"Valor Substituído4", each true),
+				    #"Valor Substituído5" = Table.ReplaceValue(#"Linhas Filtradas5","Sistemas da Informação","Sistemas de Informação",Replacer.ReplaceText,{"Curso"}),
+				    #"Linhas Filtradas6" = Table.SelectRows(#"Valor Substituído5", each true),
+				    #"Valor Substituído6" = Table.ReplaceValue(#"Linhas Filtradas6","Centro Federal do Ceara","Centro Federal do Ceará",Replacer.ReplaceText,{"Instituição de Ensino"}),
+				    #"Valor Substituído7" = Table.ReplaceValue(#"Valor Substituído6","Centro Univ CESMAC","Centro Universitário CESMAC",Replacer.ReplaceText,{"Instituição de Ensino"}),
+				    #"Valor Substituído8" = Table.ReplaceValue(#"Valor Substituído7","Centro Universitario Jorge Amado","Centro Universitário Jorge Amado",Replacer.ReplaceText,{"Instituição de Ensino"}),
+				    #"Valor Substituído9" = Table.ReplaceValue(#"Valor Substituído8","Fac Farias Brito","Faculdade Farias Brito",Replacer.ReplaceText,{"Instituição de Ensino"}),
+				    #"Linhas Filtradas7" = Table.SelectRows(#"Valor Substituído9", each true),
+				    #"Valor Substituído10" = Table.ReplaceValue(#"Linhas Filtradas7","Instutito Federal de Sergipe","Instituto Federal de Sergipe",Replacer.ReplaceText,{"Instituição de Ensino"}),
+				    #"Valor Substituído11" = Table.ReplaceValue(#"Valor Substituído10","Universidade Catolica do Salvador","Universidade Católica do Salvador",Replacer.ReplaceText,{"Instituição de Ensino"}),
+				    #"Linhas Filtradas8" = Table.SelectRows(#"Valor Substituído11", each true),
+				    #"Valor Substituído12" = Table.ReplaceValue(#"Linhas Filtradas8","Universidade do Est do Pará","Universidade do Estado do Pará",Replacer.ReplaceText,{"Instituição de Ensino"}),
+				    #"Valor Substituído13" = Table.ReplaceValue(#"Valor Substituído12","Universidade do Est do Amazonas","Universidade do Estado do Amazonas",Replacer.ReplaceText,{"Instituição de Ensino"}),
+				    #"Linhas Filtradas9" = Table.SelectRows(#"Valor Substituído13", each true),
+				    #"Valor Substituído14" = Table.ReplaceValue(#"Linhas Filtradas9","Universidade do Sul de SC","Universidade do Sul de Santa Catarina",Replacer.ReplaceText,{"Instituição de Ensino"}),
+				    #"Valor Substituído15" = Table.ReplaceValue(#"Valor Substituído14","Universidade Fed do Pará","Universidade Federal do Pará",Replacer.ReplaceText,{"Instituição de Ensino"}),
+				    #"Valor Substituído16" = Table.ReplaceValue(#"Valor Substituído15","Universidade Virtual do Estado de SP","Universidade Virtual do Estado de São Paulo",Replacer.ReplaceText,{"Instituição de Ensino"}),
+				    #"Valor Substituído17" = Table.ReplaceValue(#"Valor Substituído16","Universidade Federal de AL","Universidade Federal de Alagoas",Replacer.ReplaceText,{"Instituição de Ensino"}),
+				    #"Linhas Filtradas10" = Table.SelectRows(#"Valor Substituído17", each true)
+				in
+				    #"Linhas Filtradas10"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,26 @@
+table Tabela_Etapas
+	lineageTag: 5629b964-a601-4a70-8dd4-d2e25953dad4
+
+	column Etapa
+		lineageTag: 2f8f7bf7-1d79-4d48-97c3-5edbf71cbff5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Etapa]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Tabela_Etapas = calculated
+		mode: import
+		source =
+				DATATABLE(
+				    "Etapa", STRING,
+				    {
+				        {"Inscritos"},
+				        {"Dinâmica de Grupo"},
+				        {"Painel com Gestores"},
+				        {"Aprovados no Programa"}
+				    }
+				)
+
+	annotation PBI_Id = c3b6145925b64b10bd3d11a9a47d75f5
+

@@ -1,0 +1,47 @@
+table Top_10_Inscritos_Tabela
+	lineageTag: 3b56a850-4ee2-48f6-a933-f1bce95380fc
+
+	column Curso
+		lineageTag: f3db269c-c949-4dbf-a6b9-aa00115aaa10
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Base Principal[Curso]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Instituição de Ensino'
+		lineageTag: 587e49e9-2e8c-4776-b393-34c27252da6d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Base Principal[Instituição de Ensino]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total_Inscritos
+		formatString: 0
+		lineageTag: fb7794bf-c015-491d-b842-ca256f7c9234
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Total_Inscritos]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Top_10_Inscritos_Tabela = calculated
+		mode: import
+		source = ```
+				
+				TOPN(
+				    10, 
+				    SUMMARIZE(
+				        'Base Principal', 
+				        'Base Principal'[Curso], 
+				        'Base Principal'[Instituição de Ensino], 
+				        "Total_Inscritos", CALCULATE(COUNT('Base Principal'[ID Candidato]))
+				    ), 
+				    [Total_Inscritos], 
+				    DESC
+				)
+				```
+
+	annotation PBI_Id = 101a0f2eee3d4b73b39fc95df15a5313
+

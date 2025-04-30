@@ -1,0 +1,202 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/1.2.0/schema.json",
+  "displayName": "Etapas",
+  "name": "5149e7895ba7009d8270",
+  "options": {
+    "targetVisualNames": [
+      "dcf67486d0ad4c4c0a0e"
+    ]
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "ad88c32a16359a188509",
+    "sections": {
+      "ad88c32a16359a188509": {
+        "visualContainers": {
+          "2afa567f36d8902da9b6": {
+            "singleVisual": {
+              "visualType": "hundredPercentStackedColumnChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Medidas"
+                        }
+                      },
+                      "Property": "Total_Prio_Emprego_SIM"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Base Principal"
+                        }
+                      },
+                      "Property": "Etapa"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "ac7c47344b4e45d796bd": {
+            "singleVisual": {
+              "visualType": "gauge",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Medidas"
+                        }
+                      },
+                      "Property": "Total_Prio_Emprego_NAO"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "195d05089cd760925bb6": {
+            "singleVisual": {
+              "visualType": "gauge",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Medidas"
+                        }
+                      },
+                      "Property": "Total_Prio_Emprego_SIM"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "6ddd39dc85a1b5a147e9": {
+            "singleVisual": {
+              "visualType": "donutChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Medidas"
+                        }
+                      },
+                      "Property": "Total_Aprovados_Indicados"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "762c60343eb238198c36": {
+            "singleVisual": {
+              "visualType": "funnel",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Medidas"
+                        }
+                      },
+                      "Property": "Total_Inscritos"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "f315c5a59baa254bce15": {
+            "singleVisual": {
+              "visualType": "clusteredColumnChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Controle de Posições"
+                            }
+                          },
+                          "Property": "ID Candidato Aprovado"
+                        }
+                      },
+                      "Function": 5
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Controle de Posições"
+                        }
+                      },
+                      "Property": "Área da Posição"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "dcf67486d0ad4c4c0a0e": {
+            "singleVisual": {
+              "visualType": "image",
+              "objects": {}
+            }
+          }
+        }
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

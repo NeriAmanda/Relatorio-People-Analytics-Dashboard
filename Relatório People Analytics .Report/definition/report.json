@@ -1,0 +1,145 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/1.2.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY24SU10",
+      "reportVersionAtImport": "5.61",
+      "type": "SharedResources"
+    }
+  },
+  "layoutOptimization": "None",
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY24SU10",
+          "path": "BaseThemes/CY24SU10.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "6._Dashboard_Recursos_Humanos_22317628066130824.png",
+          "path": "6._Dashboard_Recursos_Humanos_22317628066130824.png",
+          "type": "Image"
+        },
+        {
+          "name": "16._Capa_people9838978018213598.png",
+          "path": "16._Capa_people9838978018213598.png",
+          "type": "Image"
+        },
+        {
+          "name": "6._Dashboard_Recursos_Humanos_3966751548072476.png",
+          "path": "6._Dashboard_Recursos_Humanos_3966751548072476.png",
+          "type": "Image"
+        },
+        {
+          "name": "6._Dashboard_Recursos_Humanos_497854234178859.png",
+          "path": "6._Dashboard_Recursos_Humanos_497854234178859.png",
+          "type": "Image"
+        },
+        {
+          "name": "6._Dashboard_Recursos_Humanos_8039302641988813.png",
+          "path": "6._Dashboard_Recursos_Humanos_8039302641988813.png",
+          "type": "Image"
+        },
+        {
+          "name": "clear-filter9311423836181811.png",
+          "path": "clear-filter9311423836181811.png",
+          "type": "Image"
+        },
+        {
+          "name": "people6776625561247367.png",
+          "path": "people6776625561247367.png",
+          "type": "Image"
+        },
+        {
+          "name": "job-advertisement8884170327977201.png",
+          "path": "job-advertisement8884170327977201.png",
+          "type": "Image"
+        },
+        {
+          "name": "cancel39225425808784853.png",
+          "path": "cancel39225425808784853.png",
+          "type": "Image"
+        },
+        {
+          "name": "candidate-selection9144695576303439.png",
+          "path": "candidate-selection9144695576303439.png",
+          "type": "Image"
+        },
+        {
+          "name": "analytics6860338303113369.png",
+          "path": "analytics6860338303113369.png",
+          "type": "Image"
+        },
+        {
+          "name": "rejected32183025138757726.png",
+          "path": "rejected32183025138757726.png",
+          "type": "Image"
+        },
+        {
+          "name": "data-infringement5982913681067765.png",
+          "path": "data-infringement5982913681067765.png",
+          "type": "Image"
+        },
+        {
+          "name": "clear-filter5434309018844814.png",
+          "path": "clear-filter5434309018844814.png",
+          "type": "Image"
+        },
+        {
+          "name": "clear-filter9713099294650418.png",
+          "path": "clear-filter9713099294650418.png",
+          "type": "Image"
+        },
+        {
+          "name": "clear-filter7086805983674402.png",
+          "path": "clear-filter7086805983674402.png",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true
+  }
+}

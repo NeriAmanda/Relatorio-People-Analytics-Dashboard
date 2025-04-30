@@ -1,0 +1,28 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Base Principal","Controle de Posições","Localidades","Medidas"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.142.928.0 (25.04)+de52df9f0bb74ad93a80d89c52d63fe6d07e0e1b
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table 'Base Principal'
+ref table DateTableTemplate_ec3c1039-6d0b-4572-bc9e-77b30da00133
+ref table LocalDateTable_eb1ce057-b08b-4216-a920-b5262cd894b8
+ref table 'Controle de Posições'
+ref table Localidades
+ref table Medidas
+ref table Tabela_Etapas
+ref table Top_10_Inscritos_Tabela
+ref table Top_10_Aprovados_Tabela
+
+ref cultureInfo pt-BR
+
