@@ -1,4 +1,4 @@
-<h2 align="justify">📊 Análise de Dados: People Analytics</h2>
+<h2 align="justify">🚀 Análise de Dados: People Analytics</h2>
 
 <p>Este projeto de People Analytics foi desenvolvido de forma autoral com foco em análises estratégicas de um processo seletivo fictício. 
   Utilizei o Power BI para construir um dashboard interativo que apresenta indicadores essenciais sobre diversidade, perfil dos candidatos, avanço por etapas, origem das inscrições e 
@@ -53,7 +53,7 @@ contribuindo para estratégias mais eficazes e alinhadas aos objetivos do progra
 
 - Cursos mais comuns entre os aprovados
 
-📈 Insights Adicionais
+📊 Insights Adicionais
 - Comparativo entre indicados e não indicados
 
 - Aprovados por área de atuação
