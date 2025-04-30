@@ -60,5 +60,6 @@ contribuindo para estratégias mais eficazes e alinhadas aos objetivos do progra
 
 - Origem das inscrições (e-mail, redes sociais, site etc.)
 
-<h4 align="justify">📚 Sinta-se à vontade para utilizar este repositório como base para criar suas próprias análises e praticar.
-💬 Estou aberta a trocas e sugestões — será um prazer conversar sobre ideias, melhorias ou novas abordagens para os dados!</h4>
+<h4 align="justify">📚 Sinta-se à vontade para utilizar este repositório como base para criar suas próprias análises e praticar.</h4>
+<h4 align="justify">💬 Estou aberta a trocas e sugestões — será um prazer conversar sobre ideias, melhorias ou novas abordagens para os dados!</h4>
+
