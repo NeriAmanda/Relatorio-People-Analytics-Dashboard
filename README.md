@@ -60,6 +60,8 @@ contribuindo para estratégias mais eficazes e alinhadas aos objetivos do progra
 
 - Origem das inscrições (e-mail, redes sociais, site etc.)
 
+<h4 align="justify">📊 Acesse o Dashboard Interativo: https://app.powerbi.com/view?r=eyJrIjoiMTc5OGYzNmEtYWQ4Yi00MmI5LWFjOWMtOGNiODE1OGU1ZDMzIiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9 </h4>
+
 <h4 align="justify">📚 Sinta-se à vontade para utilizar este repositório como base para criar suas próprias análises e praticar.</h4>
 <h4 align="justify">💬 Estou aberta a trocas e sugestões — será um prazer conversar sobre ideias, melhorias ou novas abordagens para os dados!</h4>
 
